@@ -51,12 +51,12 @@
 					case "2":
 						while (true)
 						{
-							Console.Clear();
-							Console.WriteLine("Calculate total price");
-                            Console.WriteLine();
+							UserInterface.Clear();
+							UserInterface.Text("Calculate total price");
+							UserInterface.Space();
 
                             int total = InputReader.GetInteger("Amount of people: ");
-                            Console.WriteLine();
+							UserInterface.Space();
 
                             int sum = 0;
 							for (int i = 1; i <= total; i++)
@@ -79,9 +79,9 @@
 								}
 							}
 
-                            Console.WriteLine();
-                            Console.WriteLine($"People: {total}");
-                            Console.WriteLine($"Price: {sum} kr");
+							UserInterface.Space();
+							UserInterface.Text($"People: {total}");
+							UserInterface.Text($"Price: {sum} kr");
 
                             UserInterface.CreateMenu(["0. Back to main menu"]);
 							input = InputReader.GetString("Enter: ");
