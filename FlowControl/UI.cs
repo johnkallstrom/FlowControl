@@ -1,6 +1,6 @@
 ﻿namespace FlowControl
 {
-	internal static class UserInterface
+	internal static class UI
 	{
 		public static void CreateMenu(string[] options)
 		{
