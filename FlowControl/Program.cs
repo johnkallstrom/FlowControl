@@ -1,4 +1,6 @@
-﻿namespace FlowControl
+﻿using FlowControl.Constants;
+
+namespace FlowControl
 {
 	internal class Program
 	{
@@ -6,57 +8,56 @@
 		{
 			string title = "Flow control";
 			string description = "Here is the main menu, use numbers to select an option";
-			string[] options = ["1. Youth or senior", "2. Calculate total price", "0. Exit"];
+			string[] options = ["1. Youth or senior", "2. Calculate total price", "3. Repeat ten times", "0. Exit"];
 
 			while (true)
 			{
-				UserInterface.CreateMenu(title, description, options);
-
-				string input = InputReader.GetString("Enter: ");
-				switch (input)
+				UI.CreateMenu(title, description, options);
+				int selection = InputReader.GetInteger(min: 0, max: 3, "Enter: ");
+				switch (selection)
 				{
-					case "0":
+					case 0:
 						Environment.Exit(0);
 						break;
-					case "1":
+					case 1:
 						while (true)
 						{
-							UserInterface.Clear();
-							UserInterface.Text("Youth or senior");
-							UserInterface.Space();
+							UI.Clear();
+							UI.Text("Youth or senior");
+							UI.Space();
 
 							int age = InputReader.GetInteger("Age: ");
-							UserInterface.Space();
+							UI.Space();
 
 							if (age < 20)
 							{
-								UserInterface.Text("Price for youths is 80 kr");
+								UI.Text($"The price for youths is {Price.Youth} kr");
 							}
 							else if (age > 64)
 							{
-								UserInterface.Text("Price for seniors is 90 kr");
+								UI.Text($"The price for seniors is {Price.Senior} kr");
 							}
 							else
 							{
-								UserInterface.Text("Standard price is 120 kr");
+								UI.Text($"The standard price is {Price.Standard} kr");
 							}
 
-							UserInterface.CreateMenu(["1. Try again", "0. Back to main menu"]);
-							input = InputReader.GetString("Enter: ");
+							UI.CreateMenu(["1. Try again", "0. Back to main menu"]);
+							selection = InputReader.GetInteger(min: 0, max: 1, "Enter: ");
 
-							if (input.Equals("1")) continue;
-							if (input.Equals("0")) break;
+							if (selection is 1) continue;
+							if (selection is 0) break;
 						}
 						break;
-					case "2":
+					case 2:
 						while (true)
 						{
-							UserInterface.Clear();
-							UserInterface.Text("Calculate total price");
-							UserInterface.Space();
+							UI.Clear();
+							UI.Text("Calculate total price");
+							UI.Space();
 
                             int total = InputReader.GetInteger("Amount of people: ");
-							UserInterface.Space();
+							UI.Space();
 
                             int sum = 0;
 							for (int i = 1; i <= total; i++)
@@ -65,33 +66,55 @@
 
 								if (age < 20)
 								{
-									sum += 80;
+									sum += Price.Youth;
 									continue;
 								}
 								else if (age > 64)
 								{
-									sum += 90;
+									sum += Price.Senior;
 									continue;
 								}
 								else
 								{
-									sum += 120;
+									sum += Price.Standard;
 								}
 							}
 
-							UserInterface.Space();
-							UserInterface.Text($"People: {total}");
-							UserInterface.Text($"Price: {sum} kr");
+							UI.Space();
+							UI.Text($"People: {total}");
+							UI.Text($"Price: {sum} kr");
 
-                            UserInterface.CreateMenu(["0. Back to main menu"]);
-							input = InputReader.GetString("Enter: ");
+							UI.CreateMenu(["1. Try again", "0. Back to main menu"]);
+							selection = InputReader.GetInteger(min: 0, max: 1, "Enter: ");
 
-							if (input.Equals("1")) continue;
-							if (input.Equals("0")) break;
+							if (selection is 1) continue;
+							if (selection is 0) break;
+						}
+						break;
+					case 3:
+						while (true)
+						{
+							UI.Clear();
+							UI.Text("Repeat ten times");
+							UI.Space();
+
+							string text = InputReader.GetString("Enter text: ");
+							UI.Space();
+							for (int i = 1; i <= 10; i++)
+							{
+                                Console.Write($"{i}. {text} ");
+                            }
+
+							UI.Space();
+							UI.CreateMenu(["1. Try again", "0. Back to main menu"]);
+							selection = InputReader.GetInteger(min: 0, max: 1, "Enter: ");
+
+							if (selection is 1) continue;
+							if (selection is 0) break;
 						}
 						break;
 					default:
-						UserInterface.TextWithTrailingDots("Incorrect input");
+						UI.TextWithTrailingDots("Incorrect input");
 						break;
 				}
 			}
