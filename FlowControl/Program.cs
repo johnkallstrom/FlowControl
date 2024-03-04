@@ -102,7 +102,7 @@ namespace FlowControl
 							UI.Space();
 							for (int i = 1; i <= 10; i++)
 							{
-                                Console.Write($"{i}. {text} ");
+								UI.Text($"{i}. {text} ", newline: false);
                             }
 
 							UI.Space();
