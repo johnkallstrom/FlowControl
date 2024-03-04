@@ -1,5 +1,6 @@
 ﻿namespace FlowControl
 {
+	// En wrapper runt System.Console för att lättare skriva ut text, menyer, mellanrum och rensa konsollen
 	internal static class UI
 	{
 		public static void CreateMenu(string[] options)
@@ -29,7 +30,11 @@
 			Console.WriteLine();
 		}
 
-		public static void Text(string content) => Console.WriteLine(content);
+		public static void Text(string content, bool newline = true)
+		{
+			if (newline) Console.WriteLine(content);
+			else Console.Write(content);
+        }
 
 		public static void Space() => Console.WriteLine();
 
