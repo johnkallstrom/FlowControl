@@ -31,16 +31,6 @@
 
 		public static void Text(string content) => Console.WriteLine(content);
 
-		public static void TextWithTrailingDots(string content)
-		{
-			Console.Write(content);
-			for (int i = 1; i <= 3; i++)
-			{
-				Console.Write($".");
-				Thread.Sleep(1000);
-			}
-		}
-
 		public static void Space() => Console.WriteLine();
 
 		public static void Clear() => Console.Clear();

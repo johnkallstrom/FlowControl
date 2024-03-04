@@ -114,7 +114,7 @@ namespace FlowControl
 						}
 						break;
 					default:
-						UI.TextWithTrailingDots("Incorrect input");
+						UI.Text("Incorrect input");
 						break;
 				}
 			}
