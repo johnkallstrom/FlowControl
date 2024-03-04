@@ -25,6 +25,19 @@
 
 						int age = UserInterface.GetIntInput("Age: ");
 
+						if (age < 20)
+						{
+                            Console.WriteLine("Price for youths is 80 kr");
+                        }
+						else if (age > 64)
+						{
+                            Console.WriteLine("Price for seniors is 90 kr");
+                        }
+						else
+						{
+                            Console.WriteLine("Standard price is 120 kr");
+                        }
+
                         Console.ReadKey();
                         break;
 					default:
