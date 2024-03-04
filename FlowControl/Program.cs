@@ -12,7 +12,7 @@
 			{
 				UserInterface.CreateMenu(title, description, options);
 
-				string input = UserInterface.GetStringInput("Enter: ");
+				string input = InputReader.GetString("Enter: ");
 				switch (input)
 				{
 					case "0":
@@ -21,28 +21,28 @@
 					case "1":
 						while (true)
 						{
-							Console.Clear();
-							Console.WriteLine("Youth or senior");
-							Console.WriteLine();
+							UserInterface.Clear();
+							UserInterface.Text("Youth or senior");
+							UserInterface.Space();
 
-							int age = UserInterface.GetIntInput("Age: ");
-							Console.WriteLine();
+							int age = InputReader.GetInteger("Age: ");
+							UserInterface.Space();
 
 							if (age < 20)
 							{
-								Console.WriteLine("Price for youths is 80 kr");
+								UserInterface.Text("Price for youths is 80 kr");
 							}
 							else if (age > 64)
 							{
-								Console.WriteLine("Price for seniors is 90 kr");
+								UserInterface.Text("Price for seniors is 90 kr");
 							}
 							else
 							{
-								Console.WriteLine("Standard price is 120 kr");
+								UserInterface.Text("Standard price is 120 kr");
 							}
 
 							UserInterface.CreateMenu(["1. Try again", "0. Back to main menu"]);
-							input = UserInterface.GetStringInput("Enter: ");
+							input = InputReader.GetString("Enter: ");
 
 							if (input.Equals("1")) continue;
 							if (input.Equals("0")) break;
@@ -53,24 +53,45 @@
 						{
 							Console.Clear();
 							Console.WriteLine("Calculate total price");
+                            Console.WriteLine();
 
-							int total = UserInterface.GetIntInput("Enter: ");
+                            int total = InputReader.GetInteger("Amount of people: ");
+                            Console.WriteLine();
 
-							int sum = 0;
-							for (int i = 0; i <= total; i++)
+                            int sum = 0;
+							for (int i = 1; i <= total; i++)
 							{
-								int age = UserInterface.GetIntInput("Age: ");
+								int age = InputReader.GetInteger("Age: ");
+
+								if (age < 20)
+								{
+									sum += 80;
+									continue;
+								}
+								else if (age > 64)
+								{
+									sum += 90;
+									continue;
+								}
+								else
+								{
+									sum += 120;
+								}
 							}
 
-							UserInterface.CreateMenu(["0. Back to main menu"]);
-							input = UserInterface.GetStringInput("Enter: ");
+                            Console.WriteLine();
+                            Console.WriteLine($"People: {total}");
+                            Console.WriteLine($"Price: {sum} kr");
+
+                            UserInterface.CreateMenu(["0. Back to main menu"]);
+							input = InputReader.GetString("Enter: ");
 
 							if (input.Equals("1")) continue;
 							if (input.Equals("0")) break;
 						}
 						break;
 					default:
-						UserInterface.Text($"Incorrect input", withDots: true);
+						UserInterface.TextWithTrailingDots("Incorrect input");
 						break;
 				}
 			}

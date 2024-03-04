@@ -1,6 +1,6 @@
 ﻿namespace FlowControl
 {
-	public static class UserInterface
+	internal static class UserInterface
 	{
 		public static void CreateMenu(string[] options)
 		{
@@ -29,65 +29,20 @@
 			Console.WriteLine();
 		}
 
-		public static void Text(string content, bool withDots = false)
+		public static void Text(string content) => Console.WriteLine(content);
+
+		public static void TextWithTrailingDots(string content)
 		{
 			Console.Write(content);
-			if (withDots)
+			for (int i = 1; i <= 3; i++)
 			{
-				for (int i = 1; i <= 3; i++)
-				{
-					Console.Write($".");
-					Thread.Sleep(1000);
-				}
+				Console.Write($".");
+				Thread.Sleep(1000);
 			}
 		}
 
-		public static string GetStringInput(string msg = "")
-		{
-			while (true)
-			{
-				Console.Write(msg);
-				string? input = Console.ReadLine();
+		public static void Space() => Console.WriteLine();
 
-				if (!string.IsNullOrWhiteSpace(input))
-				{
-					return input;
-				}
-			}
-		}
-
-		public static int GetIntInput(string msg = "")
-		{
-			while (true)
-			{
-				Console.Write(msg);
-				string? input = Console.ReadLine();
-
-				if (int.TryParse(input, out int result))
-				{
-					if (result > 0)
-					{
-						return result;
-					}
-				}
-			}
-		}
-
-		public static int GetIntInput(int min, int max, string msg = "")
-		{
-			while (true)
-			{
-				Console.Write(msg);
-				string? input = Console.ReadLine();
-
-				if (int.TryParse(input, out int result))
-				{
-					if (result >= min && result <= max)
-					{
-						return result;
-					}
-				}
-			}
-		}
+		public static void Clear() => Console.Clear();
 	}
 }
