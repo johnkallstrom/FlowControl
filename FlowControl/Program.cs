@@ -12,7 +12,7 @@ namespace FlowControl
 
 			while (true)
 			{
-				UI.CreateMenu(title, description, options);
+				UI.ShowMenu(title, description, options);
 				int selection = InputReader.GetInteger(min: 0, max: 4, "Enter: ");
 				switch (selection)
 				{
@@ -24,6 +24,7 @@ namespace FlowControl
 						{
 							UI.Clear();
 							UI.Text("Youth or senior");
+							UI.Text("Enter age to get the correct price for your ticket");
 							UI.Space();
 
 							int age = InputReader.GetInteger("Age: ");
@@ -42,7 +43,7 @@ namespace FlowControl
 								UI.Text($"The standard price is {Price.Standard} kr");
 							}
 
-							UI.CreateMenu(["1. Try again", "0. Back to main menu"]);
+							UI.ShowMenu(["1. Try again", "0. Back to main menu"]);
 							selection = InputReader.GetInteger(min: 0, max: 1, "Enter: ");
 
 							if (selection is 1) continue;
@@ -54,6 +55,7 @@ namespace FlowControl
 						{
 							UI.Clear();
 							UI.Text("Calculate total price");
+							UI.Text("Enter how many people will attend and then the age of each person");
 							UI.Space();
 
                             int total = InputReader.GetInteger("Amount of people: ");
@@ -84,7 +86,7 @@ namespace FlowControl
 							UI.Text($"People: {total}");
 							UI.Text($"Price: {sum} kr");
 
-							UI.CreateMenu(["1. Try again", "0. Back to main menu"]);
+							UI.ShowMenu(["1. Try again", "0. Back to main menu"]);
 							selection = InputReader.GetInteger(min: 0, max: 1, "Enter: ");
 
 							if (selection is 1) continue;
@@ -96,6 +98,7 @@ namespace FlowControl
 						{
 							UI.Clear();
 							UI.Text("Repeat ten times");
+							UI.Text("Write some text and it will be repeated ten times");
 							UI.Space();
 
 							string text = InputReader.GetString("Enter text: ");
@@ -106,7 +109,7 @@ namespace FlowControl
                             }
 
 							UI.Space();
-							UI.CreateMenu(["1. Try again", "0. Back to main menu"]);
+							UI.ShowMenu(["1. Try again", "0. Back to main menu"]);
 							selection = InputReader.GetInteger(min: 0, max: 1, "Enter: ");
 
 							if (selection is 1) continue;
@@ -133,7 +136,7 @@ namespace FlowControl
 								UI.Text("Not enough words");
 							}
 
-							UI.CreateMenu(["1. Try again", "0. Back to main menu"]);
+							UI.ShowMenu(["1. Try again", "0. Back to main menu"]);
 							selection = InputReader.GetInteger(min: 0, max: 1, "Enter: ");
 
 							if (selection is 1) continue;

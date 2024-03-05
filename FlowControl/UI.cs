@@ -3,7 +3,7 @@
 	// En wrapper runt System.Console för att lättare skriva ut text, menyer, mellanrum och rensa konsollen
 	internal static class UI
 	{
-		public static void CreateMenu(string[] options)
+		public static void ShowMenu(string[] options)
 		{
 			Console.WriteLine();
 
@@ -15,7 +15,7 @@
 			Console.WriteLine();
 		}
 
-		public static void CreateMenu(string title, string description, string[] options)
+		public static void ShowMenu(string title, string description, string[] options)
 		{
 			Console.Clear();
 			Console.WriteLine(title);
