@@ -1,5 +1,6 @@
 ﻿namespace FlowControl
 {
+	// En hjälper-klass för att läsa in olika typer av inputs
 	internal static class InputReader
 	{
 		public static string GetString(string msg = "")
