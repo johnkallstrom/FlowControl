@@ -30,13 +30,24 @@ namespace FlowControl
 							int age = InputReader.GetInteger("Age: ");
 							UI.Space();
 
-							if (age < 20)
+							if (age < 5)
+							{
+								UI.Text($"The price for children is {Price.Child} kr");
+							}
+							else if (age < 20)
 							{
 								UI.Text($"The price for youths is {Price.Youth} kr");
 							}
 							else if (age > 64)
 							{
-								UI.Text($"The price for seniors is {Price.Senior} kr");
+								if (age > 100)
+								{
+									UI.Text($"The price for ancients is {Price.Ancient} kr");
+								}
+								else
+								{
+									UI.Text($"The price for seniors is {Price.Senior} kr");
+								}
 							}
 							else
 							{
@@ -66,15 +77,27 @@ namespace FlowControl
 							{
 								int age = InputReader.GetInteger("Age: ");
 
-								if (age < 20)
+								if (age < 5)
+								{
+									sum += Price.Child;
+									continue;
+								}
+								else if (age < 20)
 								{
 									sum += Price.Youth;
 									continue;
 								}
 								else if (age > 64)
 								{
-									sum += Price.Senior;
-									continue;
+									if (age > 100)
+									{
+										sum += Price.Ancient;
+									}
+									else
+									{
+										sum += Price.Senior;
+										continue;
+									}
 								}
 								else
 								{
